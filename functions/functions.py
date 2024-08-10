@@ -292,13 +292,15 @@ def objective_rfc(trial):
     return accuracy
 
 
-# Objective function for hyperparameter optimization using Optuna for a Logistic Regression model
-def objective_lr(trial):
+# Objective function for hyperparameter optimization using Optuna for a Logistic Regression model# Objective function for hyperparameter optimization using Optuna for a Logistic Regression model
+def objective_lr(trial, X_train, y_train):
     """
     Objective function for hyperparameter optimization using Optuna for a Logistic Regression model.
 
     Parameters:
     trial (optuna.Trial): An Optuna trial object used to suggest hyperparameter values.
+    X_train (DataFrame): The training features.
+    y_train (Series): The training target variable.
 
     Returns:
     float: The mean cross-validation accuracy of the Logistic Regression model with suggested hyperparameters.
