@@ -319,3 +319,54 @@ def objective_lr(trial, X_train, y_train):
     accuracy = scores.mean()
     
     return accuracy
+
+def remove_outliers(df, col_outliers):
+    """
+    Caps outliers in the specified columns to be within ±3 standard deviations from the mean.
+
+    Parameters:
+    df (DataFrame): The DataFrame containing the data.
+    col_outliers (list of str): List of column names to apply the outlier removal process.
+
+    Returns:
+    None
+    """
+    for var in col_outliers:
+        upper = df[var].mean() + (3 * df[var].std())
+        lower = df[var].mean() - (3 * df[var].std())
+        
+        df[var] = np.where(
+            df[var] > upper,
+            upper,
+            np.where(
+                df[var] < lower,
+                lower,
+                df[var]
+            )
+        )
+
+
+# To save a model as a pickle file in the 'models' directory
+def save_model(model, filename):
+    """
+    Saves a machine learning model as a pickle file in the 'models' directory.
+
+    Parameters:
+    model (sklearn.base.BaseEstimator): The machine learning model to be saved.
+    filename (str): The name of the pickle file to save the model as (e.g., 'model_name.pkl').
+
+    Returns:
+    None
+    """
+    # Define the path to the 'models' directory
+    model_dir = os.path.join('..', 'models')
+
+    # Create the 'models' directory if it doesn't exist
+    os.makedirs(model_dir, exist_ok=True)
+
+    # Path to save the pickle file
+    model_path = os.path.join(model_dir, filename)
+
+    # Save the model in a pickle file
+    with open(model_path, 'wb') as file:
+        pickle.dump(model, file)
