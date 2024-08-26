@@ -9,7 +9,7 @@ This project aims to predict whether a patient is a smoker based on various clin
 - **Data Preprocessing**: Cleaning and transforming raw clinical data for analysis.
 - **Feature Engineering**: Creating meaningful features from clinical data to improve model accuracy.
 - **Model Training**: Implementing and training various machine learning models to predict smoking status.
-- **Evaluation**: Assessing model performance using metrics such as accuracy, precision, recall, and F1-score.
+- **Evaluation**: Assessing model performance using accuracy.
 - **Deployment**: Deploying the model using a web interface or API.
 
 ## Dataset
