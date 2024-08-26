@@ -50,35 +50,31 @@ To run this project locally, follow these steps:
     pip install -r requirements.txt
     ```
 
-## Usage
+## Docker
 
-1. **Data Preprocessing**: Run the preprocessing script to clean and prepare the data.
-    ```bash
-    python preprocess_data.py
-    ```
+To run the project using Docker:
 
-2. **Model Training**: Train the model using the training script.
-    ```bash
-    python train_model.py
-    ```
+1. **Build the Docker image:**
 
-3. **Model Evaluation**: Evaluate the trained model on the test data.
-    ```bash
-    python evaluate_model.py
-    ```
+   ```bash
+   docker build -t smoking-prediction .
+   ```
 
-4. **Prediction**: Use the trained model to make predictions on new patient data.
-    ```bash
-    python predict.py --input new_patient_data.csv
-    ```
+2. **Run the Docker container:**
+
+   ```bash
+   docker run -v $(pwd)/data:/app/data smoking-prediction
+   ```
+
+   This command mounts the `data` directory from your host into the container, allowing the container to access your dataset.
 
 ## Project Structure
 
 - `data/`: Contains raw and processed datasets.
+- `functions/`: Contains custom functions used in this project.
 - `notebooks/`: Jupyter notebooks for exploratory data analysis (EDA) and model experimentation.
 - `src/`: Contains the core Python scripts for data preprocessing, model training, and evaluation.
 - `models/`: Saved machine learning models.
-- `results/`: Evaluation results, plots, and reports.
 - `requirements.txt`: List of required Python packages.
 
 ## Model Details
@@ -106,3 +102,5 @@ For any questions or suggestions, feel free to reach out:
 
 
 - **GitHub**: [pakyxs](https://github.com/pakyxs)
+
+
